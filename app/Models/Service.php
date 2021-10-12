@@ -19,6 +19,11 @@ class Service extends Model
         'uuid', 'name', 'type', 'event', 'created_by', 'tenant_id'
     ];
 
+    public function getFillable()
+    {
+        return $this->fillable;
+    }
+
     /**
      * The attributes that should be cast to native types.
      *

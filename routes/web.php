@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -138,15 +139,26 @@ Route::group(['middleware' => 'auth'], function(){
 
     //only those have manage_user permission will get access
     Route::group(['middleware' => 'can:manage_user'], function(){
+
+        // All tenants routes
         Route::get('/tenants', [TenantController::class,'index']);
         Route::get('/tenant/get-list', [TenantController::class,'getTenantList']);
         Route::get('/tenant/create', [TenantController::class,'create']);
         Route::post('/tenant/store', [TenantController::class,'store'])->name('create-tenant');
         Route::get('/tenant/{uuid}', [TenantController::class,'edit']);
+        Route::get('/tenant/settings/{uuid}', [TenantController::class,'settings']);
         Route::post('/tenant/update', [TenantController::class,'update'])->name('tenant-update');
         Route::get('/tenant/delete/{uuid}', [TenantController::class,'delete']);
         Route::get('/tenant/destroy/{uuid}', [TenantController::class,'destroy']);
         Route::get('/tenant/trashed', [TenantController::class,'getTenantTrashedList']);
+
+        // All services routes
+        Route::post('/tenant/service/store', [ServiceController::class,'store'])->name('create-service');
+        Route::post('/tenant/service/update', [ServiceController::class,'update'])->name('update-service');
+        Route::get('/tenant/service/get-list/{tenant_uuid}', [ServiceController::class,'getServiceList']);
+        Route::get('/tenant/service/delete/{uuid}', [ServiceController::class,'delete']);
+        Route::get('/tenant/service/destroy/{uuid}', [ServiceController::class,'destroy']);
+        Route::get('/tenant/service/{uuid}', [ServiceController::class,'show']);
     });
 
 	// new inventory routes

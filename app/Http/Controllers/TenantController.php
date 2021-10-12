@@ -86,9 +86,18 @@ class TenantController extends Controller
                 }
                 if (Auth::user()->can('manage_user')) {
                     return '<div class="table-actions">
-                                <a href="'.url('tenant/'.$data->uuid).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
-                                <a href="'.url('tenant/delete/'.$data->uuid).'"><i class="ik ik-trash-2 f-16 text-yellow"></i></a>
-                                <a href="'.url('tenant/destroy/'.$data->uuid).'"><i class="ik ik-trash f-16 text-red"></i></a>
+                                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Setting">
+                                    <a href="'.url('tenant/settings/'.$data->uuid).'"  ><i class="ik ik-settings f-16 mr-15 text-blue"></i></a>
+                                </span>
+                                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Edit">
+                                    <a href="'.url('tenant/'.$data->uuid).'" ><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>
+                                </span>
+                                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Delete">
+                                    <a href="'.url('tenant/delete/'.$data->uuid).'"><i class="ik ik-trash-2 f-16 text-yellow"></i></a>
+                                </span>
+                                <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Remove">
+                                    <a href="'.url('tenant/destroy/'.$data->uuid).'"><i class="ik ik-trash f-16 text-red"></i></a>
+                                </span>
                             </div>';
                 } else {
                     return '';
@@ -105,6 +114,23 @@ class TenantController extends Controller
 
             if ($tenant) {
                 return view('tenant.tenant-edit', compact('tenant'));
+            } else {
+                return redirect('404');
+            }
+        } catch (\Exception $e) {
+            $bug = $e->getMessage();
+
+            return redirect()->back()->with('error', $bug);
+        }
+    }
+
+    public function settings($uuid)
+    {
+        try {
+            $tenant = Tenant::where('uuid', $uuid)->with('customers')->with('services')->first();
+
+            if ($tenant) {
+                return view('tenant.tenant-settings', compact('tenant'));
             } else {
                 return redirect('404');
             }
