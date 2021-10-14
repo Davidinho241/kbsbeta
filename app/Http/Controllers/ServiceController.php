@@ -154,7 +154,7 @@ class ServiceController extends Controller
             $update = $service->update($data);
 
             if ($update) {
-                return redirect()->back()->with('success', 'Service information updated successfully !');
+                return redirect('tenants')->with('success', 'Service information updated successfully !');
             } else {
                 return redirect('tenants')->with('error', 'Failed to update the service! Try again.');
             }
@@ -164,5 +164,7 @@ class ServiceController extends Controller
             return redirect()->back()->with('error', $bug);
         }
     }
+
+
 
 }

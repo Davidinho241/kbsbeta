@@ -91,7 +91,7 @@
                         <form class="forms-sample" method="POST" action="{{ route('create-service') }}" >
                             @csrf
                             <input type="hidden" name="tenant_id" id="tenant_id" value="{{$tenant->id}}">
-                            <input type="hidden" name="tenant_id" id="tenant_uuid" value="{{$tenant->uuid}}">
+                            <input type="hidden" name="tenant_uuid" id="tenant_uuid" value="{{$tenant->uuid}}">
                             <div class="form-group">
                                 <label for="name">{{ __('Name')}}<span class="text-red">*</span></label>
                                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name" value="" placeholder="Name" required>
