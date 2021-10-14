@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
@@ -159,6 +160,16 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/tenant/service/delete/{uuid}', [ServiceController::class,'delete']);
         Route::get('/tenant/service/destroy/{uuid}', [ServiceController::class,'destroy']);
         Route::get('/tenant/service/{uuid}', [ServiceController::class,'show']);
+
+    });
+
+    //only those have manage_permission permission will get access
+    Route::group(['middleware' => 'can:manage_permission|manage_user'], function(){
+        Route::get('/category', [CategoryController::class,'index']);
+        Route::post('/category/store', [CategoryController::class,'store'])->name('create-category');
+        Route::post('/category/update', [CategoryController::class,'update'])->name('update-category');
+        Route::get('/category/delete/{id}', [CategoryController::class,'delete']);
+        Route::get('/category/destroy/{id}', [CategoryController::class,'destroy']);
     });
 
 	// new inventory routes

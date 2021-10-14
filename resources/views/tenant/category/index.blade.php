@@ -10,7 +10,7 @@
                         <i class="ik ik-list bg-blue"></i>
                         <div class="d-inline">
                             <h5>{{ __('Categories')}}</h5>
-                            <span>Add, remove or edit product categories</span>
+                            <span>{{__('Add, remove or edit product categories')}}</span>
                         </div>
                     </div>
                 </div>
@@ -97,361 +97,32 @@
                 <div class="separator mb-20"></div>
 
                 <div class="row layout-wrap" id="layout-wrap">
-
-                    <div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-4 list-item list-item-grid">
-                        <div class="card d-flex flex-row mb-3">
-                            <a class="d-flex card-img" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                <img src=" ../img/portfolio-3.jpg " alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-
-                                <span class="badge badge-pill badge-success position-absolute badge-top-left">71 items</span>
-                            </a>
-                            <div class="d-flex flex-grow-1 min-width-zero card-content">
-                                <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center mb-0">
-                                    <a class="mb-1 list-item-heading  truncate w-40 w-xs-100" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                        <b>Electronics
-                                        </b>
-                                        <span class="text-muted">
-                                        </span>
-
-                                    </a>
-                                    <p class="mb-1 text-muted text-small date w-15 w-xs-100">
-                                        CAT1
-                                    </p>
-                                    <div class="w-15 w-xs-100">
-                                        <span class="badge badge-pill badge-secondary">51</span>
+                    @foreach($categories as $category)
+                        <div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-4 list-item list-item-grid">
+                            <div class="card d-flex flex-row mb-3">
+                                <a class="d-flex card-img" href="#categoryView" data-toggle="modal" data-target="#categoryView">
+                                    <img src="{{asset('img/portfolio-3.jpg')}}" alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
+                                    <span class="badge badge-pill badge-success position-absolute badge-top-left">{{count($category['products'])}} products</span>
+                                </a>
+                                <div class="d-flex flex-grow-1 min-width-zero card-content">
+                                    <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center mb-0">
+                                        <a class="mb-1 list-item-heading  truncate w-40 w-xs-100" href="#categoryView" data-toggle="modal" data-target="#categoryView">
+                                            <b>
+                                                {{__($category->label)}}
+                                            </b>
+                                        </a>
+                                        <p class="mb-1 text-muted text-small date w-25 w-xs-100">
+                                            {{__($category->description)}}
+                                        </p>
                                     </div>
                                 </div>
-                                <div class="list-actions">
-                                    <a href="#categoryView" data-toggle="modal" data-target="#categoryView"><i class="ik ik-edit-2"></i></a>
-                                    <a href="#" class="list-delete"><i class="ik ik-trash-2"></i></a>
+                                <div class="list-actions table-actions">
+                                    <a href="#categoryView" data-toggle="modal" data-target="#categoryView" data-id="{{$category->id}}" data-label="{{$category->label}}" data-description="{{$category->description}}" ><i class="ik ik-edit-2"></i></a>
+                                    <a href="{{url('/category/delete/'.$category->id)}}" class="list-delete"><i class="ik ik-trash-2"></i></a>
                                 </div>
-                                <div class="custom-control custom-checkbox pl-1 align-self-center">
-                                    <label class="custom-control custom-checkbox mb-0">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <span class="custom-control-label"></span>
-                                    </label>
-                                </div>
-
                             </div>
                         </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-4 list-item list-item-grid">
-                        <div class="card d-flex flex-row mb-3">
-                            <a class="d-flex card-img" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                <img src=" ../img/portfolio-3.jpg " alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-
-                                <span class="badge badge-pill badge-success position-absolute badge-top-left">60 items</span>
-                            </a>
-                            <div class="d-flex flex-grow-1 min-width-zero card-content">
-                                <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center mb-0">
-                                    <a class="mb-1 list-item-heading  truncate w-40 w-xs-100" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                        <b>Computers
-                                        </b>
-                                        <span class="text-muted">
-                                            - Electronics
-                                        </span>
-
-                                    </a>
-                                    <p class="mb-1 text-muted text-small date w-15 w-xs-100">
-                                        CAT2
-                                    </p>
-                                    <div class="w-15 w-xs-100">
-                                        <span class="badge badge-pill badge-secondary">71</span>
-                                    </div>
-                                </div>
-                                <div class="list-actions">
-                                    <a href="#categoryView" data-toggle="modal" data-target="#categoryView"><i class="ik ik-edit-2"></i></a>
-                                    <a href="#" class="list-delete"><i class="ik ik-trash-2"></i></a>
-                                </div>
-                                <div class="custom-control custom-checkbox pl-1 align-self-center">
-                                    <label class="custom-control custom-checkbox mb-0">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <span class="custom-control-label"></span>
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-4 list-item list-item-grid">
-                        <div class="card d-flex flex-row mb-3">
-                            <a class="d-flex card-img" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                <img src=" ../img/portfolio-3.jpg " alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-
-                                <span class="badge badge-pill badge-success position-absolute badge-top-left">99 items</span>
-                            </a>
-                            <div class="d-flex flex-grow-1 min-width-zero card-content">
-                                <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center mb-0">
-                                    <a class="mb-1 list-item-heading  truncate w-40 w-xs-100" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                        <b>Smart Home
-                                        </b>
-                                        <span class="text-muted">
-                                        </span>
-
-                                    </a>
-                                    <p class="mb-1 text-muted text-small date w-15 w-xs-100">
-                                        CAT3
-                                    </p>
-                                    <div class="w-15 w-xs-100">
-                                        <span class="badge badge-pill badge-secondary">27</span>
-                                    </div>
-                                </div>
-                                <div class="list-actions">
-                                    <a href="#categoryView" data-toggle="modal" data-target="#categoryView"><i class="ik ik-edit-2"></i></a>
-                                    <a href="#" class="list-delete"><i class="ik ik-trash-2"></i></a>
-                                </div>
-                                <div class="custom-control custom-checkbox pl-1 align-self-center">
-                                    <label class="custom-control custom-checkbox mb-0">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <span class="custom-control-label"></span>
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-4 list-item list-item-grid">
-                        <div class="card d-flex flex-row mb-3">
-                            <a class="d-flex card-img" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                <img src=" ../img/portfolio-3.jpg " alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-
-                                <span class="badge badge-pill badge-success position-absolute badge-top-left">38 items</span>
-                            </a>
-                            <div class="d-flex flex-grow-1 min-width-zero card-content">
-                                <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center mb-0">
-                                    <a class="mb-1 list-item-heading  truncate w-40 w-xs-100" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                        <b>Arts &amp; Crafts
-                                        </b>
-                                        <span class="text-muted">
-                                        </span>
-
-                                    </a>
-                                    <p class="mb-1 text-muted text-small date w-15 w-xs-100">
-                                        CAT4
-                                    </p>
-                                    <div class="w-15 w-xs-100">
-                                        <span class="badge badge-pill badge-secondary">29</span>
-                                    </div>
-                                </div>
-                                <div class="list-actions">
-                                    <a href="#categoryView" data-toggle="modal" data-target="#categoryView"><i class="ik ik-edit-2"></i></a>
-                                    <a href="#" class="list-delete"><i class="ik ik-trash-2"></i></a>
-                                </div>
-                                <div class="custom-control custom-checkbox pl-1 align-self-center">
-                                    <label class="custom-control custom-checkbox mb-0">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <span class="custom-control-label"></span>
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-4 list-item list-item-grid">
-                        <div class="card d-flex flex-row mb-3">
-                            <a class="d-flex card-img" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                <img src=" ../img/portfolio-3.jpg " alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-
-                                <span class="badge badge-pill badge-success position-absolute badge-top-left">53 items</span>
-                            </a>
-                            <div class="d-flex flex-grow-1 min-width-zero card-content">
-                                <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center mb-0">
-                                    <a class="mb-1 list-item-heading  truncate w-40 w-xs-100" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                        <b>Fashion
-                                        </b>
-                                        <span class="text-muted">
-                                        </span>
-
-                                    </a>
-                                    <p class="mb-1 text-muted text-small date w-15 w-xs-100">
-                                        CAT5
-                                    </p>
-                                    <div class="w-15 w-xs-100">
-                                        <span class="badge badge-pill badge-secondary">4</span>
-                                    </div>
-                                </div>
-                                <div class="list-actions">
-                                    <a href="#categoryView" data-toggle="modal" data-target="#categoryView"><i class="ik ik-edit-2"></i></a>
-                                    <a href="#" class="list-delete"><i class="ik ik-trash-2"></i></a>
-                                </div>
-                                <div class="custom-control custom-checkbox pl-1 align-self-center">
-                                    <label class="custom-control custom-checkbox mb-0">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <span class="custom-control-label"></span>
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-4 list-item list-item-grid">
-                        <div class="card d-flex flex-row mb-3">
-                            <a class="d-flex card-img" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                <img src=" ../img/portfolio-3.jpg " alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-
-                                <span class="badge badge-pill badge-success position-absolute badge-top-left">96 items</span>
-                            </a>
-                            <div class="d-flex flex-grow-1 min-width-zero card-content">
-                                <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center mb-0">
-                                    <a class="mb-1 list-item-heading  truncate w-40 w-xs-100" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                        <b>Baby
-                                        </b>
-                                        <span class="text-muted">
-                                        </span>
-
-                                    </a>
-                                    <p class="mb-1 text-muted text-small date w-15 w-xs-100">
-                                        CAT6
-                                    </p>
-                                    <div class="w-15 w-xs-100">
-                                        <span class="badge badge-pill badge-secondary">53</span>
-                                    </div>
-                                </div>
-                                <div class="list-actions">
-                                    <a href="#categoryView" data-toggle="modal" data-target="#categoryView"><i class="ik ik-edit-2"></i></a>
-                                    <a href="#" class="list-delete"><i class="ik ik-trash-2"></i></a>
-                                </div>
-                                <div class="custom-control custom-checkbox pl-1 align-self-center">
-                                    <label class="custom-control custom-checkbox mb-0">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <span class="custom-control-label"></span>
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-4 list-item list-item-grid">
-                        <div class="card d-flex flex-row mb-3">
-                            <a class="d-flex card-img" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                <img src=" ../img/portfolio-3.jpg " alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-
-                                <span class="badge badge-pill badge-success position-absolute badge-top-left">30 items</span>
-                            </a>
-                            <div class="d-flex flex-grow-1 min-width-zero card-content">
-                                <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center mb-0">
-                                    <a class="mb-1 list-item-heading  truncate w-40 w-xs-100" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                        <b>Health &amp; Care
-                                        </b>
-                                        <span class="text-muted">
-                                        </span>
-
-                                    </a>
-                                    <p class="mb-1 text-muted text-small date w-15 w-xs-100">
-                                        CAT7
-                                    </p>
-                                    <div class="w-15 w-xs-100">
-                                        <span class="badge badge-pill badge-secondary">54</span>
-                                    </div>
-                                </div>
-                                <div class="list-actions">
-                                    <a href="#categoryView" data-toggle="modal" data-target="#categoryView"><i class="ik ik-edit-2"></i></a>
-                                    <a href="#" class="list-delete"><i class="ik ik-trash-2"></i></a>
-                                </div>
-                                <div class="custom-control custom-checkbox pl-1 align-self-center">
-                                    <label class="custom-control custom-checkbox mb-0">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <span class="custom-control-label"></span>
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-4 list-item list-item-grid">
-                        <div class="card d-flex flex-row mb-3">
-                            <a class="d-flex card-img" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                <img src=" ../img/portfolio-3.jpg " alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-
-                                <span class="badge badge-pill badge-success position-absolute badge-top-left">84 items</span>
-                            </a>
-                            <div class="d-flex flex-grow-1 min-width-zero card-content">
-                                <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center mb-0">
-                                    <a class="mb-1 list-item-heading  truncate w-40 w-xs-100" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                        <b>Others
-                                        </b>
-                                        <span class="text-muted">
-                                        </span>
-
-                                    </a>
-                                    <p class="mb-1 text-muted text-small date w-15 w-xs-100">
-                                        CAT8
-                                    </p>
-                                    <div class="w-15 w-xs-100">
-                                        <span class="badge badge-pill badge-secondary">62</span>
-                                    </div>
-                                </div>
-                                <div class="list-actions">
-                                    <a href="#categoryView" data-toggle="modal" data-target="#categoryView"><i class="ik ik-edit-2"></i></a>
-                                    <a href="#" class="list-delete"><i class="ik ik-trash-2"></i></a>
-                                </div>
-                                <div class="custom-control custom-checkbox pl-1 align-self-center">
-                                    <label class="custom-control custom-checkbox mb-0">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <span class="custom-control-label"></span>
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-4 list-item list-item-grid">
-                        <div class="card d-flex flex-row mb-3">
-                            <a class="d-flex card-img" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                <img src="http://127.0.0.1:3030/img/products/ipone-6.jpg " alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-
-                                <span class="badge badge-pill badge-success position-absolute badge-top-left">65 items</span>
-                            </a>
-                            <div class="d-flex flex-grow-1 min-width-zero card-content">
-                                <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center mb-0">
-                                    <a class="mb-1 list-item-heading  truncate w-40 w-xs-100" href="#categoryView" data-toggle="modal" data-target="#categoryView">
-                                        <b>Mobile Accesories
-                                        </b>
-                                        <span class="text-muted">
-                                            - Electronics
-                                        </span>
-
-                                    </a>
-                                    <p class="mb-1 text-muted text-small date w-15 w-xs-100">
-                                        CAT9
-                                    </p>
-                                    <div class="w-15 w-xs-100">
-                                        <span class="badge badge-pill badge-secondary">56</span>
-                                    </div>
-                                </div>
-                                <div class="list-actions">
-                                    <a href="#categoryView" data-toggle="modal" data-target="#categoryView"><i class="ik ik-edit-2"></i></a>
-                                    <a href="#" class="list-delete"><i class="ik ik-trash-2"></i></a>
-                                </div>
-                                <div class="custom-control custom-checkbox pl-1 align-self-center">
-                                    <label class="custom-control custom-checkbox mb-0">
-                                        <input type="checkbox" class="custom-control-input">
-                                        <span class="custom-control-label"></span>
-                                    </label>
-                                </div>
-
-                            </div>
-                        </div>
-                    </div>
-
-
+                    @endforeach
                 </div>
 
             </div>
@@ -466,35 +137,34 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label class="d-block">Category Image</label>
-                        <input type="file" name="category_image" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label class="d-block">Category Title</label>
-                        <input type="text" name="category_title" class="form-control" placeholder="Enter Category Title">
-                    </div>
-                    <div class="form-group">
-                        <label class="d-block">Category Code</label>
-                        <input type="text" name="category_code" class="form-control" placeholder="Enter Category Code">
-                    </div>
-                    <div class="form-group">
-                        <label class="d-block">Parent Category</label>
-                        <label class="d-block">Parent Category</label>
-                        <select class="form-control select2 ">
-                            <option selected="selected" value="" data-select2-id="3">Select Category</option>
-                            <option value="1">Electronics</option>
-                            <option value="3">Smart Home</option>
-                            <option value="4">Arts &amp; Crafts</option>
-                            <option value="5">Fashion</option>
-                            <option value="6">Baby</option>
-                            <option value="7">Health &amp; Care</option>
-                            <option value="8">Others</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input class="btn btn-primary" type="submit" name="Save" value="Save">
-                    </div>
+                    <form class="forms-sample" method="POST" action="{{ route('create-category') }}" >
+                        @csrf
+                        <div class="form-group">
+                            <label class="d-block" for="label">{{__('Category label')}}</label>
+                            <input type="text" name="label" class="form-control @error('label') is-invalid @enderror" id="label" placeholder="Enter Category Title">
+                            <div class="help-block with-errors"></div>
+
+                            @error('label')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="description">{{ __('Description')}}</label>
+                            <textarea class="form-control @error('description') is-invalid @enderror" id="description" name="description" rows="4"></textarea>
+                            <div class="help-block with-errors"></div>
+
+                            @error('description')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-primary" type="submit" name="Save" value="Save">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -509,37 +179,43 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label class="d-block">Category Image</label>
-                        <input type="file" name="category_image" class="form-control">
-                    </div>
-                    <div class="form-group">
-                        <label class="d-block">Category Title</label>
-                        <input type="text" name="category_title" class="form-control" placeholder="Enter Category Title" value="Computer" >
-                    </div>
-                    <div class="form-group">
-                        <label class="d-block">Category Code</label>
-                        <input type="text" name="category_code" class="form-control" placeholder="Enter Category Code" value="CAT12">
-                    </div>
-                    <div class="form-group">
-                        <label class="d-block">Parent Category</label>
-                        {<label class="d-block">Parent Category</label>
-                        <select class="form-control select2 ">
-                            <option selected="selected" value="" data-select2-id="3">Select Category</option>
-                            <option value="1">Electronics</option>
-                            <option value="3">Smart Home</option>
-                            <option value="4">Arts &amp; Crafts</option>
-                            <option value="5">Fashion</option>
-                            <option value="6">Baby</option>
-                            <option value="7">Health &amp; Care</option>
-                            <option value="8">Others</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <input class="btn btn-primary" type="submit" name="Update" value="Update">
-                    </div>
+                    <form class="forms-sample" method="POST" action="{{ route('update-category') }}" >
+                        @csrf
+                        <input type="hidden" name="id" id="editId" value="">
+                        <div class="form-group">
+                            <label class="d-block" for="editLabel">{{__('Category label')}}</label>
+                            <input type="text" name="label" class="form-control @error('label') is-invalid @enderror" id="editLabel" value="" placeholder="Enter Category Title">
+                            <div class="help-block with-errors"></div>
+
+                            @error('label')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="description" for="editDescription">{{ __('Description')}}</label>
+                            <textarea class="form-control @error('description') is-invalid @enderror" id="editDescription" name="description" rows="4"></textarea>
+                            <div class="help-block with-errors"></div>
+
+                            @error('description')
+                            <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <input class="btn btn-primary" type="submit" name="Save" value="Save">
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <!-- push external js -->
+    @push('script')
+        <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
+        <!--get role wise permissiom ajax script-->
+        <script src="{{ asset('js/service.js') }}"></script>
+    @endpush
 @endsection

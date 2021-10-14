@@ -244,9 +244,9 @@
                                 <div class="help-block with-errors"></div>
 
                                 @error('name')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="form-group">
@@ -255,9 +255,9 @@
                                 <div class="help-block with-errors"></div>
 
                                 @error('type')
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
                                 @enderror
                             </div>
                             <div class="row">
@@ -278,6 +278,19 @@
                 </div>
             </div>
 
+            <div class="modal fade full-window-modal" id="serviceDetail" tabindex="-1" role="dialog" aria-labelledby="serviceDetailLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-body">
+                            @include('include.service-detail')
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close')}}</button>
+                            <button type="button" class="btn btn-primary">{{ __('Save changes')}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     <!-- push external js -->
     @push('script')

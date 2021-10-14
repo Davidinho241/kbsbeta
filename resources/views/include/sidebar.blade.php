@@ -36,6 +36,10 @@
                         @can('manage_permission')
                         <a href="{{url('permission')}}" class="menu-item {{ ($segment1 == 'permission') ? 'active' : '' }}">{{ __('Permission')}}</a>
                         @endcan
+                        <!-- only those have manage_permission permission will get access -->
+                        @can('manage_permission')
+                        <a href="{{url('category')}}" class="menu-item {{ ($segment1 == 'category') ? 'active' : '' }}">{{ __('Category')}}</a>
+                        @endcan
                     </div>
                 </div>
                 <div class="nav-item {{ ($segment1 == 'tenants') ? 'active open' : '' }} has-sub">
