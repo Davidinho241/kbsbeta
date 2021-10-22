@@ -87,7 +87,7 @@ class ServiceController extends Controller
                 if (Auth::user()->can('manage_user')) {
                     return '<div class="table-actions">
                                 <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Setting">
-                                    <a href="#" data-toggle="modal" data-target="#serviceDetail" data-id="'.$data->uuid.'"><i class="ik ik-settings f-16 mr-15 text-blue"></i></a>
+                                    <a href="#" data-toggle="modal" data-target="#serviceDetail" data-uuid="'.$data->uuid.'"><i class="ik ik-settings f-16 mr-15 text-blue"></i></a>
                                 </span>
                                 <span class="d-inline-block" tabindex="0" data-toggle="tooltip" title="Edit">
                                     <a href="#" data-toggle="modal" data-target="#editServiceModal" data-id="'.$data->id.'" data-name="'.$data->name.'" data-type="'.$data->type.'" data-event="'.$data->event.'"><i class="ik ik-edit-2 f-16 mr-15 text-green"></i></a>

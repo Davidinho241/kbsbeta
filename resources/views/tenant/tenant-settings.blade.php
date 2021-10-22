@@ -189,13 +189,13 @@
                     <div class="card-body">
                         <table id="services_table" class="table">
                             <thead>
-                            <tr>
-                                <th>{{ __('UUID')}}</th>
-                                <th>{{ __('Name')}}</th>
-                                <th>{{ __('Type')}}</th>
-                                <th>{{ __('Created by')}}</th>
-                                <th>{{ __('Action')}}</th>
-                            </tr>
+                                <tr>
+                                    <th>{{ __('UUID')}}</th>
+                                    <th>{{ __('Name')}}</th>
+                                    <th>{{ __('Type')}}</th>
+                                    <th>{{ __('Created by')}}</th>
+                                    <th>{{ __('Action')}}</th>
+                                </tr>
                             </thead>
                             <tbody>
                             </tbody>
@@ -282,10 +282,10 @@
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-body">
-                            @include('include.service-detail')
+                            @include('tenant.product.list')
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close')}}</button>
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" id="btnCloseServiceDetail">{{ __('Close')}}</button>
                             <button type="button" class="btn btn-primary">{{ __('Save changes')}}</button>
                         </div>
                     </div>

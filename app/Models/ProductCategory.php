@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Product extends Model
+class ProductCategory extends Model
 {
     use HasFactory, SoftDeletes;
 
@@ -16,7 +16,7 @@ class Product extends Model
      * @var array
      */
     protected $fillable = [
-        'uuid', 'label', 'description', 'external_key', 'service_id', 'category_id'
+        'product_id', 'category_id'
     ];
 
     /**
@@ -30,18 +30,13 @@ class Product extends Model
         'deleted_at' => 'datetime',
     ];
 
-    public function service()
+    public function product()
     {
-        return $this->belongsTo('\App\Models\Service', 'service_id', 'id');
+        return $this->belongsTo('\App\Models\Product', 'product_id', 'id');
     }
 
-    public function categories()
+    public function category()
     {
-        return $this->belongsToMany(Category::class, 'product_categories');
-    }
-
-    public function plans()
-    {
-        return $this->hasMany('\App\Models\Plan', 'product_id', 'id');
+        return $this->belongsTo('\App\Models\Category', 'category_id', 'id');
     }
 }

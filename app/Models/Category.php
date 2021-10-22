@@ -30,9 +30,8 @@ class Category extends Model
             'deleted_at' => 'datetime',
         ];
 
-
         public function products()
         {
-            return $this->hasMany('\App\Models\Product', 'category_id', 'id');
+            return $this->belongsToMany(Product::class, 'product_categories');
         }
 }

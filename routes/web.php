@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
@@ -161,21 +162,26 @@ Route::group(['middleware' => 'auth'], function(){
         Route::get('/tenant/service/destroy/{uuid}', [ServiceController::class,'destroy']);
         Route::get('/tenant/service/{uuid}', [ServiceController::class,'show']);
 
-    });
 
-    //only those have manage_permission permission will get access
-    Route::group(['middleware' => 'can:manage_permission|manage_user'], function(){
+        // All categories routes
         Route::get('/category', [CategoryController::class,'index']);
         Route::post('/category/store', [CategoryController::class,'store'])->name('create-category');
         Route::post('/category/update', [CategoryController::class,'update'])->name('update-category');
         Route::get('/category/delete/{id}', [CategoryController::class,'delete']);
         Route::get('/category/destroy/{id}', [CategoryController::class,'destroy']);
+
+        // All products routes
+        Route::get('/products/create/{tenant_uuid}', [ProductController::class,'create']);
+        Route::get('/products/update/{id}/{tenant_uuid}', [ProductController::class,'edit']);
+        Route::get('/products/get-list/{service_uuid}', [ProductController::class,'getProductList']);
+        Route::post('/products/store', [ProductController::class,'store'])->name('create-product');
+        Route::post('/products/update', [ProductController::class,'update'])->name('update-product');
+        Route::get('/products/delete/{id}', [ProductController::class,'delete']);
+        Route::get('/products/destroy/{id}', [ProductController::class,'destroy']);
     });
 
 	// new inventory routes
 	Route::get('/pos', function () { return view('tenant.pos'); });
-	Route::get('/products', function () { return view('tenant.service.list'); });
-	Route::get('/products/create', function () { return view('tenant.service.create'); });
 	Route::get('/categories', function () { return view('tenant.category.index'); });
 	Route::get('/sales', function () { return view('tenant.invoice.list'); });
 	Route::get('/sales/create', function () { return view('tenant.invoice.create'); });
