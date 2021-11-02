@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PlanController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Route;
@@ -178,6 +179,9 @@ Route::group(['middleware' => 'auth'], function(){
         Route::post('/products/update', [ProductController::class,'update'])->name('update-product');
         Route::get('/products/delete/{id}', [ProductController::class,'delete']);
         Route::get('/products/destroy/{id}', [ProductController::class,'destroy']);
+
+        // All plans routes
+        Route::get('/plans', [PlanController::class,'index']);
     });
 
 	// new inventory routes

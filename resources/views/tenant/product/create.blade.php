@@ -97,12 +97,88 @@
                                         </select>
                                         <div class="help-block with-errors"></div>
                                     </div>
-                                    <div class="form-group text-right">
-                                        <button type="submit" class="btn btn-primary">Save</button>
+                                </div>
+                            </div>
+                            <div class="page-header">
+                                <div class="row align-items-end">
+                                    <div class="col-lg-8">
+                                        <div class="page-header-title">
+                                            <i class="ik ik-airplay bg-blue"></i>
+                                            <div class="d-inline">
+                                                <h5>{{__('Product plan')}}</h5>
+                                                <span>{{__('Attach plan to the product')}}</span>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <label for="duration">{{__('Duration')}}<span class="text-red">*</span></label>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <input id="duration_length" type="number" class="form-control @error('duration_length') is-invalid @enderror" name="duration_length" value="" placeholder="30" required="">
+                                                <div class="help-block with-errors"></div>
 
+                                                @error('duration_length')
+                                                <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <select name="duration_phase" class="form-control" id="duration_phase">
+                                                    <option value="DAYS">{{__('select duration phase ...')}}</option>
+                                                    <option value="DAYS">DAYS</option>
+                                                    <option value="MONTH">MONTH</option>
+                                                    <option value="YEARS">YEARS</option>
+                                                    <option value="UNLIMITED">UNLIMITED</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="price">{{__('Price')}}<span class="text-red">*</span></label>
+                                        <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="" placeholder="10.00 XAF" required="">
+                                        <div class="help-block with-errors"></div>
+
+                                        @error('price')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label for="billing_period">{{__('Billing period')}}<span class="text-red">*</span></label>
+                                        <input id="billing_period" type="text" class="form-control @error('billing_period') is-invalid @enderror" name="billing_period" value="" placeholder="Enter billing period" required="">
+                                        <div class="help-block with-errors"></div>
+
+                                        @error('billing_period')
+                                        <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="type">Type<span class="text-red">*</span></label>
+                                        <select name="type" class="form-control" id="type">
+                                            <option>{{__('select plan type ...')}}</option>
+                                            <option value="TRIAL">TRIAL</option>
+                                            <option value="EVERGREEN">EVERGREEN</option>
+                                            <option value="ONETIME">ONETIME</option>
+                                        </select>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group text-right">
+                                <button type="submit" class="btn btn-primary">Save</button>
+                            </div>
                         </form>
                     </div>
                 </div>

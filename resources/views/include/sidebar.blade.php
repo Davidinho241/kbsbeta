@@ -50,6 +50,9 @@
                     </div>
                 </div>
                 <div class="nav-item">
+                    <a href="{{url('plans')}}"><i class="ik ik-airplay"></i><span>{{ __('Plans')}}</span></a>
+                </div>
+                <div class="nav-item">
                     <a href="#"><i class="ik ik-archive"></i><span>{{ __('Subscriptions')}}</span></a>
                 </div>
                 <div class="nav-item">

@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Arr;
 
 class Plan extends Model
 {
@@ -29,6 +30,23 @@ class Plan extends Model
         'updated_at' => 'datetime',
         'deleted_at' => 'datetime',
     ];
+
+    public function getPriceAttribute(){
+        $jsonPrice = json_decode($this->attributes['price']);
+        return $jsonPrice->XAF;
+    }
+
+    public function getDurationAttribute(){
+        $jsonDuration = json_decode($this->attributes['duration'], true);
+        if (Arr::has($jsonDuration, 'DAYS')){
+            return $jsonDuration['DAYS'] .' DAYS';
+        }else if (Arr::has($jsonDuration, 'MONTH')){
+            return $jsonDuration['MONTH'] .' MONTH';
+        }else if (Arr::has($jsonDuration, 'YEARS')){
+            return $jsonDuration['YEARS'] .' YEARS';
+        }
+        return 'UNLIMITED';
+    }
 
     public function product()
     {

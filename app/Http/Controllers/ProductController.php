@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Plan;
 use App\Models\Product;
 use App\Models\ProductCategory;
 use App\Models\Service;
@@ -50,6 +51,10 @@ class ProductController extends Controller
                 'description' => 'required | string ',
                 'service_id' => 'required ',
                 'categories' => 'required ',
+                'duration_length' => 'required',
+                'price' => 'required | string ',
+                'type' => 'required',
+                'billing_period' => 'required | string',
             ]);
 
             if ($validator->fails()) {
@@ -69,6 +74,15 @@ class ProductController extends Controller
                     "category_id"=> $category
                 ]);
             }
+
+            $plan = Plan::create([
+                "product_id" => $product->id,
+                "price" => json_encode(['XAF' => $request->price]),
+                "duration" => json_encode([
+                    $request->duration_phase != null ? $request->duration_phase :'DAYS' => $request->duration_length]),
+                "type" => $request->type,
+                "billing_period" => $request->billing_period
+            ]);
 
             if ($product) {
                 return (new TenantController())->settings($tenant->uuid);
